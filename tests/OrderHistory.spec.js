@@ -11,6 +11,7 @@ test('Validating My Orders or “Order History”', async ({ page }) => {
   await page.locator('[data-test="login-form"]').getByRole('button').filter({ hasText: /^$/ }).click();
   await page.locator('[data-test="login-submit"]').click();
   await page.locator('[data-test="nav-invoices"]').click();
+
  //await page.getByRole('link', { name: 'Details' }).click();
 
   const InvoiceNumber =  page.locator('//table/tbody/tr/td[1]')
