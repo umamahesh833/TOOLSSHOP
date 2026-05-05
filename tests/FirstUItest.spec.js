@@ -75,3 +75,32 @@ await NewsLetterCheckBox.uncheck()
 
 
 
+test('submit Button Test ',async ({page})=>{
+//Launch the browser and navigate to our application
+await page.goto("https://automationexercise.com/signup")
+await page.waitForTimeout(5000)
+await page.getByRole("button", {name:"Consent"}).click()
+await page.getByPlaceholder("Name").fill("Random9987@gmail.com")
+await page.waitForTimeout(1000)
+await page.locator("[data-qa='signup-email']").fill("Random9987@gmail.com")
+
+const SignUp = page.getByRole("button", {name:'Signup'})
+await SignUp.click()
+
+//select a radio button
+
+const mrRadio = page.locator('#id_gender1')
+const mrsRadio = page.locator('#id_gender2')
+await mrRadio.click()
+
+
+console.log("the status of radio button Mr is - "+await mrRadio.isChecked())
+console.log("the status of radio button Mrs is - "+await mrsRadio.isChecked())
+
+
+//Select a check box
+const NewsLetterCheckBox = page.locator('#newsletter')
+await NewsLetterCheckBox.click()
+await page.waitForTimeout(3000)
+await NewsLetterCheckBox.uncheck()
+})
