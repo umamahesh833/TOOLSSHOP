@@ -34,7 +34,7 @@ await CartIcon.click()
  const productname = await productTitle.textContent()
 // console.log(productname)
 //await page.pause()
-await expect(productname).toBe('Hammer ');
+await expect(productname.trim()).toBe('Hammer');
 
 
 
