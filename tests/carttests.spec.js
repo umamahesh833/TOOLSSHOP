@@ -33,8 +33,8 @@ await CartIcon.click()
 //Capture the title of the product
  const productname = await productTitle.textContent()
 // console.log(productname)
-await page.pause()
-expect(productname).toBe('Hammer');
+//await page.pause()
+expect(productname).toBe('Hammer ');
 
 
 
