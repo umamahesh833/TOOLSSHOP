@@ -2,7 +2,7 @@ import{test, expect} from '@playwright/test'
 
 
 
-test('Lakshman Test', async ({ page }) => {
+test('Iframes', async ({ page }) => {
   await page.goto('https://ui.vision/demo/webtest/frames/');
 
   const NoofFrames = await page.frames().length
