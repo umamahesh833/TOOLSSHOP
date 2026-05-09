@@ -1,41 +1,27 @@
 import { test, expect } from '@playwright/test';
-
-
-
-
+const {ProductsDetailPage} = require("../PageObjects/ProductsDetailPage")
+const {HomePage} = require("../PageObjects/HomePage")
+const {CartPage} = require("../PageObjects/CartPage")
 
 
 test.only('Validate product add to cart',async ({page})=>{
 
 //Launch the application
 await page.goto('https://practicesoftwaretesting.com/')
+await page.pause()
 
+//Creating object for page classes
+const homePage = new HomePage(page)
+const productsDetailPage = new ProductsDetailPage(page)
+const cartPage = new CartPage(page)
 
-const Hammer = page.locator("[alt='Hammer']")
-const addtoCart = page.getByRole("button", {name:'Add to cart'})
-const alert = page.locator("[role='alert']")
-const CartIcon = page.locator("[data-test='nav-cart']")
-const productTitle = page.locator(".product-title")
-const productPrice = page.locator("[data-test='product-price']")
+await homePage.ClickHammer()
+await productsDetailPage.ClickAddToCart()
+await productsDetailPage.ValidateAlert()
+await homePage.ClickCartIcon()
 
-//Click on a product
-await Hammer.click()
-
-//Click on add to cart button
-await addtoCart.click()
-
-//Validate alert is displaying
-await expect(alert).toBeVisible();
-
-//Click on cart icon
-await CartIcon.click()
-
-//Capture the title of the product
- const productname = await productTitle.textContent()
-await expect(productname.trim()).toBe('Hammer');
-
-await expect(productTitle).toHaveText('Hammer');
-await expect(productPrice).toHaveText('$12.58');
+await cartPage.ValidateProductTitle()
+await cartPage.ValidateProductPrice()
 
 })
 
@@ -53,27 +39,26 @@ const alert = page.locator("[role='alert']")
 const HomePge = page.getByRole("link",{name:"Home"})
 const NoofProduct = page.locator("//table/tbody/tr")
 
-await Products.first().click()
-await addtoCart.click()
-//Validate alert is displaying
-await expect(alert).toBeVisible();
-await HomePge.click()
+//Creating object for page classes
+const homePage = new HomePage(page)
+const productsDetailPage = new ProductsDetailPage(page)
 
-await page.waitForTimeout(2000)
+await homePage.ClickFirstProduct()
+await productsDetailPage.ClickAddToCart()
+await productsDetailPage.ValidateAlert()
+await homePage.ClickHomePage()
 
-await Products.nth(4).click()
-await addtoCart.click()
-//Validate alert is displaying
-await expect(alert).toBeVisible();
-await HomePge.click()
-await page.waitForTimeout(2000)
 
-await Products.last().click()
-await addtoCart.click()
-//Validate alert is displaying
-await expect(alert).toBeVisible();
-//Click on cart icon
-await CartIcon.click()
+await homePage.ClickNthProduct(4)
+await productsDetailPage.ClickAddToCart()
+await productsDetailPage.ValidateAlert()
+await homePage.ClickHomePage()
+
+await homePage.ClickLastProduct()
+await productsDetailPage.ClickAddToCart()
+await productsDetailPage.ValidateAlert()
+
+await homePage.ClickCartIcon()
 
 
 })
