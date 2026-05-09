@@ -32,11 +32,7 @@ await CartIcon.click()
 
 //Capture the title of the product
  const productname = await productTitle.textContent()
-// console.log(productname)
-//await page.pause()
 await expect(productname.trim()).toBe('Hammer');
-
-
 
 await expect(productTitle).toHaveText('Hammer');
 await expect(productPrice).toHaveText('$12.58');
