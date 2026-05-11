@@ -3,10 +3,11 @@
 import { test, expect } from '@playwright/test';
 
 test('Validate Registration Form', async ({ page }) => {
+  let data = ExcelData()
   await page.goto('https://practicesoftwaretesting.com/');
   await page.locator('[data-test="nav-sign-in"]').click();
   await page.locator('[data-test="register-link"]').click();
-  await page.locator('[data-test="first-name"]').fill('TestFN');
+  await page.locator('[data-test="first-name"]').fill(data.firstNM);
   await page.locator('[data-test="last-name"]').fill('TestLN');
   await page.locator('[data-test="dob"]').fill('1992-08-07');
   await page.locator('[data-test="country"]').selectOption('GB');
