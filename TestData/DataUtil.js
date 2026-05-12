@@ -1,12 +1,14 @@
+import path from "node:path";
+
 const exceljs = require("exceljs")
 
 let obj = {}
 
 export async function ExcelData() {
-
+const excelpath = path.join(__dirname, "TestData", "SuperTest.xlsx")
     //Connected to Workbook
     const WorkBook = new exceljs.Workbook();
-    await WorkBook.xlsx.readFile("C:/Users/umama/OneDrive/Desktop/SuperTest.xlsx")
+    await WorkBook.xlsx.readFile(excelpath)
     //Connect a worksheet in this workbok
     const WorkSheet =await WorkBook.getWorksheet("Sheet1")
 
