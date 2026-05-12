@@ -2,7 +2,7 @@ const exceljs = require("exceljs")
 
 let obj = {}
 
-async function ExcelData() {
+export async function ExcelData() {
 
     //Connected to Workbook
     const WorkBook = new exceljs.Workbook();
@@ -13,13 +13,9 @@ async function ExcelData() {
     const NoofRows = await WorkSheet.actualRowCount
     const NoofColumns = await WorkSheet.actualColumnCount
 
-    console.log(getcelldata.value);
-    console.log(NoofRows);
-    console.log(NoofColumns);
-
     for(let i=1;i<=NoofColumns;i++){
-        let key = await WorkSheet.getCell(1,i).value
-        let value = await WorkSheet.getCell(2,i).value
+        let key = await WorkSheet.getCell(1,i).text
+        let value = await WorkSheet.getCell(2,i).text
 
         obj[`${key}`] = value
     }
@@ -27,3 +23,4 @@ async function ExcelData() {
 return obj
 
 }
+

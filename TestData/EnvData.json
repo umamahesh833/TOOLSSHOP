@@ -1,0 +1,8 @@
+{
+    "TestEnvURL":"https://practicesoftwaretesting.com/",
+    "DevEnvURL":"https://practicesoftwaretesting.com/",
+    "UATEnvURL":"https://practicesoftwaretesting.com/",
+    "Pre-prodEnvURL":"https://practicesoftwaretesting.com/",
+    "UserName":"testlnfn323@gmail.com",
+    "password":"Playwright@123"
+}

@@ -4,7 +4,7 @@ const {HomePage} = require("../PageObjects/HomePage")
 const {CartPage} = require("../PageObjects/CartPage")
 
 
-test.only('Validate product add to cart',async ({page})=>{
+test('Validate product add to cart',async ({page})=>{
 
 //Launch the application
 await page.goto('https://practicesoftwaretesting.com/')
@@ -27,7 +27,7 @@ await cartPage.ValidateProductPrice()
 
 
 
-test.only('Add multiple products to cart and validate in cart page',async ({page})=>{
+test('Add multiple products to cart and validate in cart page',async ({page})=>{
 
 //Launch the application
 await page.goto('https://practicesoftwaretesting.com/')
