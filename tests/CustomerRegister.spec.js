@@ -4,7 +4,7 @@ const testData = require("../TestData/DataUtil.js")
 const envdata = JSON.parse(JSON.stringify(require("../TestData/EnvData.json")))
 
 
-test.only('Validate Registration Form', async ({ page }) => {
+test('Validate Registration Form', async ({ page }) => {
 
   let data = await testData.ExcelData()
 

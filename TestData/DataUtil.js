@@ -5,7 +5,7 @@ const exceljs = require("exceljs")
 let obj = {}
 
 export async function ExcelData() {
-const excelpath = path.join(__dirname, "TestData", "SuperTest.xlsx")
+const excelpath = path.join(__dirname, "SuperTest.xlsx")
     //Connected to Workbook
     const WorkBook = new exceljs.Workbook();
     await WorkBook.xlsx.readFile(excelpath)
