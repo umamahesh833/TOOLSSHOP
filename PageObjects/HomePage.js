@@ -1,4 +1,4 @@
-export class HomePage{
+class HomePage{
 
 
 
@@ -8,6 +8,11 @@ constructor(page){
     this.CartIcon  = page.locator("[data-test='nav-cart']")
     this.Products = page.locator(".card-img-top")
     this.HomePge = page.getByRole("link",{name:"Home"})
+    this.SignIn =  page.locator('[data-test="nav-sign-in"]')
+}
+
+async ClickSignIn(){
+    await this.SignIn.click()
 }
 
 async ClickHammer(){
@@ -34,3 +39,5 @@ async ClickHomePage(){
     this.HomePge.click()
 }
 }
+
+module.exports ={HomePage}

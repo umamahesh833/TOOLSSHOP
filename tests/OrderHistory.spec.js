@@ -43,7 +43,7 @@ test('Lakshman Test', async ({ page }) => {
 });
 
 
-test.only('test', async ({ page }) => {
+test('test', async ({ page }) => {
   await page.goto('https://practicesoftwaretesting.com/');
   await page.locator('[data-test="nav-sign-in"]').click();
   await page.locator('[data-test="email"]').click();

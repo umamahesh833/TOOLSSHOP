@@ -1,5 +1,8 @@
 const{Given, When, Then} = require("@cucumber/cucumber");
 const {expect, chromium} = require("@playwright/test");
+const {HomePage} = require("../../PageObjects/HomePage")
+const {SignInPage} = require("../../PageObjects/SignInPage")
+const {OrderHistoryPage} = require("../../PageObjects/OrderHistoryPage")
 
 
 
@@ -17,22 +20,54 @@ console.log("--->I launched the application")
 
 When('sign in to the application',async function () {
 console.log("--->sign in to the application")
-
- await page.locator('[data-test="nav-sign-in"]').click();
-  await page.locator('[data-test="email"]').fill('testlnfn323@gmail.com');
-  await page.locator('[data-test="password"]').fill('Playwright@123');
-  await page.locator('[data-test="login-submit"]').click();
+  const homePage = new HomePage(page)
+  const signInPage = new SignInPage(page)
+  
+  await homePage.ClickSignIn()
+  await signInPage.LoginToApp()
 
 });
+
+ When('I sign with {string} and {string}',async function (string, string2) {
+ console.log("--->sign in to the application")
+  const homePage = new HomePage(page)
+  const signInPage = new SignInPage(page)
+  
+  await homePage.ClickSignIn()
+  await signInPage.LoginToApp(string, string2)
+});
+
 
 
 When('I navigate to order history',async function () {
 console.log("--->I navigate to order history")
-   await page.locator("[routerlink='invoices']").click()
+  const orderHistoryPage = new OrderHistoryPage(page)
+  await orderHistoryPage.ClickInvoice()
+
 });
 
 
-Then('I should identify previous order', function () {
-  expect(page.locator("//table[@class='table table-hover']")).toBeEnabled()
+Then('I should identify previous order',async function () {
+  console.log("--->I should identify previous order")
+  //   const orderHistoryPage = new OrderHistoryPage(page)
+  // await orderHistoryPage.ValidateInvoiceTable()
+
+});
+
+
+
+
+When('I select a product', function () {
+
+});
+
+
+When('I add to cart and go to cartpage', function () {
+
+});
+
+
+Then('the product should be there in cart page', function () {
+
 });
 
