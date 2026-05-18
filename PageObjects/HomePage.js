@@ -9,6 +9,8 @@ constructor(page){
     this.Products = page.locator(".card-img-top")
     this.HomePge = page.getByRole("link",{name:"Home"})
     this.SignIn =  page.locator('[data-test="nav-sign-in"]')
+    this.handtools = page.getByLabel('Hand Tools')
+    this.powertools = page.getByLabel('Power Tools')
 }
 
 async ClickSignIn(){
@@ -24,19 +26,26 @@ async ClickCartIcon(){
 }
 
 async ClickFirstProduct(){
-    this.Products.first().click()
+    await this.Products.first().click()
 }
 
 async ClickNthProduct(Number){
-    this.Products.nth(Number).click()
+    await this.Products.nth(Number).click()
 }
 
 async ClickLastProduct(){
-        this.Products.last().click()
+    await this.Products.last().click()
 }
 
 async ClickHomePage(){
-    this.HomePge.click()
+    await this.HomePage.click()
+}
+async checkhandtools(){
+    await this.handtools.check()
+}
+
+async checkpowertools(){
+    await this.powertools.check()
 }
 }
 

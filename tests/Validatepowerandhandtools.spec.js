@@ -1,21 +1,15 @@
 import { test, expect } from '@playwright/test'
+const {HomePage} = require("../PageObjects/HomePage")
 
 
-test('validate all the hand tools and power tools are displayed', async ({ page }) => {
+test.only('validate all the hand tools and power tools are displayed', async ({ page }) => {
 // Open website
   await page.goto('https://practicesoftwaretesting.com')
-  await expect(page).toHaveTitle(/Toolshop/)
+  const homePage = new HomePage(page)
 
-  await page.getByLabel('Hand Tools').check();
-  await page.getByLabel('Power Tools').check();
+  await homePage.checkhandtools()
+  await homePage.checkpowertools()
 
-  await expect(page.getByLabel('Hand Tools')).toBeChecked();
-  await expect(page.getByLabel('Power Tools')).toBeChecked();
-  
-  
- 
-
-
-
-
+  await expect(homePage.handtools).toBeChecked();
+  await expect(homePage.powertools).toBeChecked();
 })
