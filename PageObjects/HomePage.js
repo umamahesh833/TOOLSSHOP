@@ -11,6 +11,7 @@ constructor(page){
     this.SignIn =  page.locator('[data-test="nav-sign-in"]')
     this.handtools = page.getByLabel('Hand Tools')
     this.powertools = page.getByLabel('Power Tools')
+    this.productNames = page.locator('[data-test="product-name"]')
 }
 
 async ClickSignIn(){
