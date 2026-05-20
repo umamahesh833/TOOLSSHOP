@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 const {HomePage} = require("../PageObjects/HomePage")
 
-test.only('Validate Hand Tools and Power Tools filter', async ({ page }) => {
+test('Validate Hand Tools and Power Tools filter', async ({ page }) => {
 
   // Launch the application
   await page.goto('https://practicesoftwaretesting.com/');

@@ -1,0 +1,56 @@
+
+
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://practicesoftwaretesting.com/');
+  await page.locator('[data-test="nav-sign-in"]').click();
+  await page.locator('[data-test="register-link"]').click();
+  await page.locator('[data-test="first-name"]').click();
+  await page.locator('[data-test="first-name"]').fill('baby rupa');
+  await page.locator('[data-test="last-name"]').click();
+  await page.locator('[data-test="last-name"]').fill('kadiyala');
+  await page.locator('[data-test="dob"]').click();
+  await page.locator('[data-test="dob"]').fill('2000-01-17');
+  await page.locator('[data-test="country"]').selectOption('GB');
+  await page.locator('[data-test="postal_code"]').click();
+  await page.locator('[data-test="postal_code"]').fill('WV14 0SR');
+  await page.locator('[data-test="house_number"]').click();
+  await page.locator('[data-test="house_number"]').fill('72');
+  await page.locator('[data-test="street"]').click();
+  await page.locator('[data-test="street"]').fill('Ambergate road');
+  await page.locator('[data-test="city"]').click();
+  await page.locator('[data-test="city"]').fill('Bilston');
+  await page.locator('[data-test="state"]').click();
+  await page.locator('[data-test="state"]').fill('west midlands');
+  await page.locator('[data-test="phone"]').click();
+  await page.locator('[data-test="phone"]').fill('07828323521');
+  await page.locator('[data-test="email"]').click();
+  await page.locator('[data-test="email"]').click();
+  await page.locator('[data-test="email"]').fill('babyrupasri@gmail.com');
+  await page.locator('[data-test="password"]').click();
+  await page.locator('[data-test="password"]').fill('Anjamma@12');
+  await page.locator('[data-test="register-submit"]').click();
+  await page.locator('[data-test="email"]').click();
+  await page.locator('[data-test="email"]').fill('babyrupasri@gmail.com');
+  await page.locator('[data-test="password"]').click();
+  await page.locator('[data-test="password"]').fill('Anjamma@12');
+  await page.locator('[data-test="login-submit"]').click();
+  await page.locator('[data-test="nav-home"]').click();
+  await page.locator('[data-test="product-01KS2D8G7RFMBWSZN4F182JXAB"]').click();
+  await page.locator('[data-test="add-to-cart"]').click();
+  await page.getByRole('alert', { name: 'Product added to shopping' }).click();
+  await page.locator('[data-test="nav-cart"]').click();
+  await page.locator('[data-test="proceed-1"]').click();
+  await page.locator('[data-test="proceed-2"]').click();
+  await page.locator('[data-test="house_number"]').click();
+  await page.locator('[data-test="house_number"]').fill('72');
+  await page.locator('[data-test="proceed-3"]').click();
+  await page.locator('[data-test="payment-method"]').selectOption('cash-on-delivery');
+  await page.locator('[data-test="finish"]').click();
+  await page.locator('[data-test="finish"]').click();
+  await page.getByText('INV-').click();
+  await page.getByText('Thanks for your order! Your').click();
+  await page.getByText('Thanks for your order! Your').click();
+  await page.locator('body').press('ControlOrMeta+c');
+});
