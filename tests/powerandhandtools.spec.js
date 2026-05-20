@@ -9,10 +9,10 @@ test.only('Validate Hand Tools and Power Tools filter', async ({ page }) => {
   const homePage = new HomePage(page)
 
   await homePage.checkhandtools()
-  //await homePage.checkpowertools()
+  await homePage.checkpowertools()
 
   await expect(homePage.handtools).toBeChecked();
-  //await expect(homePage.powertools).toBeChecked();
+  await expect(homePage.powertools).toBeChecked();
   const expectedProducts = [
     'Hammer',
     'Hand Saw',
