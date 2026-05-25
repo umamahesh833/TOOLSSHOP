@@ -4,16 +4,22 @@ class SignInPage{
 
 constructor(page){
     this.page = page
+    this.registerLink = page.locator('[data-test="register-link"]')
     this.EmailId = page.locator('[data-test="email"]')
     this.Password = page.locator('[data-test="password"]')
     this.submit = page.locator('[data-test="login-submit"]')
 }
 
-async LoginToApp(){
-   await this.EmailId.fill('testlnfn323@gmail.com')
-   await this.Password.fill('Playwright@123')
-   await this.submit.click()
+async ClickRegisterLink() {
+
+   await this.registerLink.click()
 }
+
+// async LoginToApp(){
+//    await this.EmailId.fill(`${Date.now()}${data.email}`)
+//    await this.Password.fill('Playwright@123')
+//    await this.submit.click()
+// }
 
 async LoginToApp(Username, password){
    await this.EmailId.fill(Username)

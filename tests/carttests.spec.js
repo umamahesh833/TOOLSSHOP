@@ -4,24 +4,31 @@ const {HomePage} = require("../PageObjects/HomePage")
 const {CartPage} = require("../PageObjects/CartPage")
 
 
-test('Validate product add to cart',async ({page})=>{
+test.only('Validate product add to cart',async ({page})=>{
 
 //Launch the application
 await page.goto('https://practicesoftwaretesting.com/')
-await page.pause()
+//await page.pause()
 
 //Creating object for page classes
 const homePage = new HomePage(page)
 const productsDetailPage = new ProductsDetailPage(page)
 const cartPage = new CartPage(page)
 
-await homePage.ClickHammer()
+await homePage.ClickNthProduct(2)
+const productName = await productsDetailPage.GetProductName()
+const productPrice = await productsDetailPage.GetProductPrice()
 await productsDetailPage.ClickAddToCart()
 await productsDetailPage.ValidateAlert()
 await homePage.ClickCartIcon()
+// await homePage.ClickHammer()
+// await productsDetailPage.ClickAddToCart()
 
-await cartPage.ValidateProductTitle()
-await cartPage.ValidateProductPrice()
+await homePage.ClickCartIcon()
+
+await cartPage.ValidateProductTitle(productName)
+await cartPage.ValidateProductPrice(productPrice)
+await cartPage.ValidateTotalPrice()
 
 })
 

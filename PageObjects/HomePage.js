@@ -39,7 +39,7 @@ async ClickLastProduct(){
 }
 
 async ClickHomePage(){
-    await this.HomePage.click()
+    await this.HomePge.click()
 }
 async checkhandtools(){
     await this.handtools.check()
