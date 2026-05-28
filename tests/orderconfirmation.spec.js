@@ -8,7 +8,7 @@ const {ProductsDetailPage} = require("../PageObjects/ProductsDetailPage")
 import { ExcelData } from "../TestData/DataUtil"
 import {CartPage } from '../PageObjects/CartPage'
 
-test.only('test', async ({ page }) => {
+test.only("Validating for Submitting the form confirms the order.", async ({ page }) => {
   await page.goto('https://practicesoftwaretesting.com/');
 
   const homePage = new HomePage(page)
