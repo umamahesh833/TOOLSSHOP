@@ -20,7 +20,7 @@ test.only("Validating for Submitting the form confirms the order.", async ({ pag
   await homePage.ClickSignIn()
   await signinpage.ClickRegisterLink()
   await register.RegisterUser(data)
-  await page.waitForTimeout(3000)
+  await page.waitForTimeout(1000)
   await signinpage.LoginToApp(register.userEmail,register.userPassword)
   await page.waitForTimeout(1000)
   await homePage.ClickHomePage()
