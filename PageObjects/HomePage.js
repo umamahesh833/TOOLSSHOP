@@ -49,10 +49,6 @@ async checkhandtools(){
 async checkpowertools(){
     await this.powertools.check()
 }
-async getUserMenuText() {
-    return await this.userMenu.innerText()
-}
-
 }
 
 module.exports ={HomePage}
