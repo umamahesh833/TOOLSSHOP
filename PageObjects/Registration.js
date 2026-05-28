@@ -38,6 +38,8 @@ class Register {
         await this.email.fill(this.userEmail)
         await this.password.fill(this.userPassword)
         await this.registerButton.click()
+
+        return { userEmail: this.userEmail, userPassword: this.userPassword }
     }
 }
 

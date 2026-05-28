@@ -15,17 +15,17 @@ async ClickRegisterLink() {
    await this.registerLink.click()
 }
 
-// async LoginToApp(){
-//    await this.EmailId.fill(`${Date.now()}${data.email}`)
-//    await this.Password.fill('Playwright@123')
-//    await this.submit.click()
-// }
-
-async LoginToApp(Username, password){
-   await this.EmailId.fill(Username)
-   await this.Password.fill(password)
+async LoginToApp(userEmail,userPassword){
+   await this.EmailId.fill(userEmail)
+   await this.Password.fill(userPassword)
    await this.submit.click()
 }
+
+// async LoginToApp(Username, password){
+//    await this.EmailId.fill(Username)
+//    await this.Password.fill(password)
+//    await this.submit.click()
+// }
 
 
 }

@@ -6,7 +6,7 @@ const {HomePage} = require("../PageObjects/HomePage")
 const {SignInPage} = require("../PageObjects/SignInPage")
 const {ProductsDetailPage} = require("../PageObjects/ProductsDetailPage")
 import { ExcelData } from "../TestData/DataUtil"
-
+import {CartPage } from '../PageObjects/CartPage'
 
 test.only('test', async ({ page }) => {
   await page.goto('https://practicesoftwaretesting.com/');
@@ -16,29 +16,40 @@ test.only('test', async ({ page }) => {
   const register = new Register(page)
   const data = await ExcelData()
   const productdetails =  new ProductsDetailPage(page)
-  
+  const cartpage = new CartPage(page)
   await homePage.ClickSignIn()
   await signinpage.ClickRegisterLink()
   await register.RegisterUser(data)
+  await page.waitForTimeout(3000)
   await signinpage.LoginToApp(register.userEmail,register.userPassword)
+  await page.waitForTimeout(1000)
   await homePage.ClickHomePage()
   await homePage.ClickHammer()
   await productdetails.ClickAddToCart()
   await productdetails.ValidateAlert()
   await homePage.ClickCartIcon()
+  await cartpage.Proceedtocheckout(
+    signinpage,
+    register.userEmail,
+    register.userPassword
+)
+  await register.houseNumber.fill(data.Hno)
+  await cartpage.proceedtocheckoutpay()
 
- 
-  
-  // await page.locator('[data-test="proceed-1"]').click();
-  // await page.locator('[data-test="proceed-2"]').click();
-  // await page.locator('[data-test="house_number"]').click();
-  // await page.locator('[data-test="house_number"]').fill('72');
-  // await page.locator('[data-test="proceed-3"]').click();
-  // await page.locator('[data-test="payment-method"]').selectOption('cash-on-delivery');
-  // await page.locator('[data-test="finish"]').click();
-  // await page.locator('[data-test="finish"]').click();
-  // await page.getByText('INV-').click();
-  // await page.getByText('Thanks for your order! Your').click();
-  // await page.getByText('Thanks for your order! Your').click();
-  // await page.locator('body').press('ControlOrMeta+c');
+  const methods = [
+    'Bank Transfer',
+    'Cash on Delivery',
+    'Credit Card',
+    'Buy Now Pay Later',
+    'Gift Card'
+  ]
+
+const randomMethod =
+    methods[Math.floor(Math.random() * methods.length)]
+
+await cartpage.paymentoption('Cash on Delivery')
+await cartpage.confirmmethod()
+await cartpage.paymentsucessmethod()
+await cartpage.confirmmethod()
+await cartpage.Invoicemethod()
 });

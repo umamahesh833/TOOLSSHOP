@@ -12,6 +12,7 @@ constructor(page){
     this.handtools = page.getByLabel('Hand Tools')
     this.powertools = page.getByLabel('Power Tools')
     this.productNames = page.locator('[data-test="product-name"]')
+    this.userMenu = page.locator('[data-test="nav-menu"]')
 }
 
 async ClickSignIn(){
@@ -48,6 +49,10 @@ async checkhandtools(){
 async checkpowertools(){
     await this.powertools.check()
 }
+async getUserMenuText() {
+    return await this.userMenu.innerText()
+}
+
 }
 
 module.exports ={HomePage}

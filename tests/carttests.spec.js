@@ -4,7 +4,7 @@ const {HomePage} = require("../PageObjects/HomePage")
 const {CartPage} = require("../PageObjects/CartPage")
 
 
-test.only('Validate product add to cart',async ({page})=>{
+test('Validate product add to cart',async ({page})=>{
 
 //Launch the application
 await page.goto('https://practicesoftwaretesting.com/')
