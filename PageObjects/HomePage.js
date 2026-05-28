@@ -11,6 +11,8 @@ constructor(page){
     this.SignIn =  page.locator('[data-test="nav-sign-in"]')
     this.handtools = page.getByLabel('Hand Tools')
     this.powertools = page.getByLabel('Power Tools')
+    this.productNames = page.locator('[data-test="product-name"]')
+    this.userMenu = page.locator('[data-test="nav-menu"]')
 }
 
 async ClickSignIn(){
@@ -38,7 +40,7 @@ async ClickLastProduct(){
 }
 
 async ClickHomePage(){
-    await this.HomePage.click()
+    await this.HomePge.click()
 }
 async checkhandtools(){
     await this.handtools.check()

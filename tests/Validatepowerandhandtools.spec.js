@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 const {HomePage} = require("../PageObjects/HomePage")
 
 
-test.only('validate all the hand tools and power tools are displayed', async ({ page }) => {
+test('validate all the hand tools and power tools are displayed', async ({ page }) => {
 // Open website
   await page.goto('https://practicesoftwaretesting.com')
   const homePage = new HomePage(page)
