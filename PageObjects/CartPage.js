@@ -32,7 +32,7 @@ await expect(productname.trim()).toBe(product.trim());
 
 async ValidateProductPrice(price){
     const productPrice = await this.productPrice.textContent()
-await expect(productPrice.replace('$',' ').trim()).toBe(price.replace('$',' ').trim());
+    await expect(productPrice.replace('$',' ').trim()).toBe(price.replace('$',' ').trim());
 }
  async ValidateTotalPrice(){
 
