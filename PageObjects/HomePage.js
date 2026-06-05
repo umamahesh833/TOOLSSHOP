@@ -1,7 +1,5 @@
 class HomePage{
 
-
-
 constructor(page){
     this.page = page
     this.Hammer = page.locator("[alt='Hammer']")
@@ -12,7 +10,20 @@ constructor(page){
     this.handtools = page.getByLabel('Hand Tools')
     this.powertools = page.getByLabel('Power Tools')
     this.productNames = page.locator('[data-test="product-name"]')
-    this.userMenu = page.locator('[data-test="nav-menu"]')
+    this.pageMap = {
+            previous : page.locator('[aria-label="Previous"]'),
+            next     : page.locator('[aria-label="Next"]'),
+        }
+    for (let i = 1; i <= 5; i++) {
+            this.pageMap[i] = page.locator(`[aria-label="Page-${i}"]`);
+        }
+    // this.pageprevious = page.locator('[aria-label="Previous"]')
+    // this.pagenext = page.locator('[aria-label="Next"]')
+    // this.pageone = page.locator('[aria-label="Page-1"]')
+    // this.pagetwo = page.locator('[aria-label="Page-2"]')
+    // this.pagethree = page.locator('[aria-label="Page-3"]')
+    // this.pagefour = page.locator('[aria-label="Page-4"]')
+    // this.pagefive = page.locator('[aria-label="Page-5"]')
 }
 
 async ClickSignIn(){
@@ -49,6 +60,12 @@ async checkhandtools(){
 async checkpowertools(){
     await this.powertools.check()
 }
+async clickPage(target) {
+        const locator = this.pageMap[target];
+        if (!locator) throw new Error('Unknown page')
+        await locator.click()
+    }
 }
+
 
 module.exports ={HomePage}

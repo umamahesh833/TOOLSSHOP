@@ -10,7 +10,7 @@ const {ProductsDetailPage} = require("../PageObjects/ProductsDetailPage")
 const {HomePage} = require("../PageObjects/HomePage")
 
 
-test.only('Validate add to cart button',async ({page})=>{
+test('Validate add to cart button',async ({page})=>{
 
     await page.goto('https://practicesoftwaretesting.com/')
     const homePage = new HomePage(page)
@@ -35,7 +35,7 @@ test.only('Validate add to cart button',async ({page})=>{
         
         await page.goBack()
 
-        // wait for cards again
+    
         await expect(productCards.first()).toBeVisible()
     }
 
